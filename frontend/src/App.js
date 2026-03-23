@@ -6,7 +6,7 @@ import TaskCard from './components/TaskCard';
 import Dashboard from './pages/Dashboard';
 import Timer from './components/Timer';
 
-import { getTasks, addTask as addTaskAPI, deleteTask, completeTask } from "./services/api";
+import { getTasks, addTask as addTaskAPI, deleteTask, completeTask } from "./services/Api";
 
 function App() {
 
@@ -23,20 +23,17 @@ function App() {
     setTasks([...tasks, res.data]);
   };
 
-  const deleteTaskHandler = async (index) => {
-    await deleteTask(index);
-
-    const updated = tasks.filter((_, i) => i !== index);
+  const deleteTaskHandler = async (id) => {
+    await deleteTask(id);
+    const updated = tasks.filter((t) => t._id !== id);
     setTasks(updated);
   };
 
-  const completeTaskHandler = async (index) => {
-    await completeTask(index);
-
-    const updated = tasks.map((t, i) =>
-      i === index ? { ...t, completed: true } : t
+  const completeTaskHandler = async (id) => {
+    await completeTask(id);
+    const updated = tasks.map((t) =>
+      t._id === id ? { ...t, completed: true } : t
     );
-
     setTasks(updated);
   };
 
@@ -48,12 +45,12 @@ function App() {
       <TaskForm addTask={addTask} />
 
       <div className="container mt-4">
-        {tasks.map((task, index) => (
+        {tasks.map((task) => (
           <TaskCard
-            key={index}
+            key={task._id}
             task={task}
-            deleteTask={() => deleteTaskHandler(index)}
-            completeTask={() => completeTaskHandler(index)}
+            deleteTask={() => deleteTaskHandler(task._id)}
+            completeTask={() => completeTaskHandler(task._id)}
           />
         ))}
       </div>

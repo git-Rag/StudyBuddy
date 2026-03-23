@@ -4,7 +4,7 @@ const TaskForm = (props) => {
   const [task, setTask] = useState({
     title: '',
     subject: '',
-    hours: '',
+    studyHours: '',
     mood: '😃 Productive'
   })
 
@@ -13,7 +13,7 @@ const TaskForm = (props) => {
   }
 
   const handleSubmit = () => {
-    if(task.title && task.subject && task.hours){
+    if(task.title && task.subject && task.studyHours){
       props.addTask(task)
     }
   }
@@ -24,7 +24,7 @@ const TaskForm = (props) => {
         <h4 className="mb-3">Add Study Task</h4>
         <input type="text" name="title" placeholder="Task Title" className="form-control mb-2" onChange={handleChange} />
         <input type="text" name="subject" placeholder="Subject" className="form-control mb-2" onChange={handleChange} />
-        <input type="number" name="hours" placeholder="Study Hours" className="form-control mb-2" onChange={handleChange} />
+        <input type="number" name="studyHours" placeholder="Study Hours" className="form-control mb-2" onChange={handleChange} />
         <select name="mood" className="form-select mb-3" onChange={handleChange}>
           <option>😃 Productive</option>
           <option>😐 Normal</option>

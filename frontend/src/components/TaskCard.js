@@ -8,7 +8,7 @@ const TaskCard = ({ task, deleteTask, completeTask }) => {
           <h5 className="mb-1" style={{ textDecoration: task.completed ? 'line-through' : 'none', color: task.completed ? 'green' : 'black' }}>
             {task.title}
           </h5>
-          <small className="text-muted">{task.subject} • {task.hours} hrs • {task.mood}</small>
+          <small className="text-muted">{task.subject} • {task.studyHours} hrs • {task.mood}</small>
           {task.completed && <span className="badge bg-success ms-2">Completed ✅</span>}
         </div>
         <div>

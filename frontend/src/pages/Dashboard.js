@@ -3,7 +3,7 @@ import React from 'react'
 const Dashboard = ({ tasks }) => {
   const totalTasks = tasks.length
   const completedTasks = tasks.filter(t => t.completed).length
-  const totalHours = tasks.reduce((sum, t) => sum + Number(t.hours), 0)
+  const totalHours = tasks.reduce((sum, t) => sum + Number(t.studyHours), 0)
 
   return (
     <div className="container mt-4">

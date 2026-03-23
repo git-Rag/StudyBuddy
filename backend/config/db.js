@@ -2,12 +2,10 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://priysh31:3112@cluster0.v80vyxl.mongodb.net/studybuddy"
-    );
-    console.log("MongoDB Connected");
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB Connected:", conn.connection.host);
   } catch (error) {
-    console.log("Database connection failed", error);
+    console.error("Database connection failed:", error.message);
     process.exit(1);
   }
 };
